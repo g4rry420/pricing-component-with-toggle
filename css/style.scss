@@ -1,0 +1,237 @@
+$colors:(
+    gradient1st: hsl(236, 72%, 79%),
+    gradient2nd: hsl(237, 63%, 64%),
+    veryLightGrayishBlue: hsl(240, 78%, 98%),
+    lightGrayishBlue: hsl(234, 14%, 74%),
+    grayishBlue: hsl(233, 13%, 49%),
+    darkGrayishBlue: hsl(232, 13%, 33%)
+);
+
+*,
+*:focus,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 100%;
+    background-color: map-get($map: $colors, $key: veryLightGrayishBlue);
+    background-image: url(../images/bg-bottom.svg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+//Toggle button starts here
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(163,168,240);
+    background: linear-gradient(to right, map-get($colors, gradient1st) 0%, map-get($colors, gradient2nd)  100%); 
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+// .slider:hover{
+//     background: hsl(236, 68%, 77%);
+// }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider {
+    background: rgb(163,168,240);
+    background: linear-gradient(to right, map-get($colors, gradient1st) 0%, map-get($colors, gradient2nd)  100%); 
+}
+// input:checked + .slider:hover{
+//     background: hsl(236, 68%, 77%);
+// }
+input:focus + .slider {
+    box-shadow: 0 0 1px map-get($map: $colors, $key: gradient2nd);
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+// Toggle button ends here
+.main{
+    background-image: url(../images/bg-top.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    .grid{
+        display: grid;
+        grid-template-columns: 31.33% 31.33% 31.33%;
+        justify-content: space-evenly;
+        grid-row-gap: 10%;
+    }
+    header{
+        grid-column: 1/ span 3;
+        text-align: center;
+        margin-top: 5%;
+        // margin-bottom: 5%;
+        h1{
+            color: map-get($map: $colors, $key: darkGrayishBlue);
+        }
+    }
+    .subb{
+        grid-column: 1/ span 3;
+        text-align: center;
+        // margin-bottom: 7%;
+        span{
+            color: map-get($map: $colors, $key: lightGrayishBlue);
+        }
+    }
+    .box{
+        width: 90%;
+        text-align: center;
+        background-color: white;
+        border-radius: 10px;
+        padding: 7%;
+        h4{
+            color: map-get($map: $colors, $key: grayishBlue);
+        }
+        span{
+            display: inline-block;
+            font-size: 38px;
+        }
+        h2{
+            display: inline-block;
+            font-size: 4em;
+            margin-top: 8%;
+            margin-bottom: 8%;
+            
+        }
+        h5{
+            margin-top: 4%;
+            margin-bottom: 4%;
+            color: map-get($map: $colors, $key: grayishBlue);
+        }
+        button{
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            margin-top: 12%;
+            background: rgb(163,168,240);
+            background: linear-gradient(to right, map-get($colors, gradient1st) 0%, map-get($colors, gradient2nd)  100%);
+            color: white;
+            padding: 4%;
+            border: 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover{
+            border: 1px solid black;
+            background: white;
+            color: map-get($map: $colors, $key: gradient2nd);
+        }
+        hr{
+            border: 1px solid map-get($map: $colors, $key: lightGrayishBlue);
+        }
+    }
+    .box-margin-left{
+        margin-left: 14%;
+    }
+    .box-margin-right{
+        margin-left: -14%;
+    }
+    .box-center{
+        background: rgb(163,168,240);
+        background: linear-gradient(to right, map-get($colors, gradient1st) 0%, map-get($colors, gradient2nd)  100%);
+        color: white;
+        margin-top: -25px;
+        padding-top: 14%;
+        height: 113%;
+        h4{
+            color: white;
+        }
+        h5{
+            color: white;
+        }
+        button{
+            color: map-get($map: $colors, $key: gradient2nd);
+            background: white;
+        }
+        button:hover{
+            border: 1px solid white;
+            background: map-get($map: $colors, $key: gradient2nd);
+            color: white;
+        }
+    }
+}
+.attribution {
+    text-align: center;
+    margin-top: 12%;
+    }
+.attribution a { 
+        color: hsl(228, 45%, 44%); 
+    }
+@media only screen and (max-width:700px){
+    .container {
+        width: 95% ;
+    }
+    .box-margin-left{
+        margin-left: 0 !important;
+        grid-column: 1/ span 1;
+        margin-left: 6% !important;
+    }
+    .box-margin-right{
+        margin-left: 0 !important;
+        grid-column: 1/ span 1;
+        margin-left: 6% !important;
+    }
+    .box-center{
+        margin-top: initial !important;
+        height: initial !important;
+        grid-column: 1/ span 1;
+        margin-left: 6% !important;
+
+    }
+    header{
+        grid-column: 1/ span 1;
+    }
+    .subb{
+        grid-column: 1/ span 1;
+    }
+    .grid{
+        grid-template-columns:  98% !important;
+        grid-row-gap: 5% !important;
+    }
+    .attribution{
+        margin-top: 85%;
+    }
+    
+}
